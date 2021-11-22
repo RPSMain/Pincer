@@ -8,11 +8,11 @@ from importlib import import_module
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from ..utils.directory import chdir
+from ..utils import chdir
 
 if TYPE_CHECKING:
     from typing import Dict
-    from ..utils.types import Coro
+    from ..utils import Coro
 
 
 _log = logging.getLogger(__package__)
