@@ -1,5 +1,5 @@
 """
-Pincer library
+Pincer
 ====================
 An asynchronous python API wrapper meant to replace discord.py
 
@@ -9,29 +9,16 @@ Full MIT License can be found in `LICENSE` at the project root.
 
 from typing import NamedTuple, Literal, Optional
 
-from ._config import GatewayConfig
-from .client import event_middleware, Client, Bot
-from .commands import command, ChatCommandHandler
-from .exceptions import (
-    PincerError, UnhandledException, NoExportMethod,
-    CogError, CogNotFound, CogAlreadyExists, NoValidSetupMethod,
-    TooManySetupArguments, NoCogManagerReturnFound, CommandError,
-    CommandCooldownError, CommandIsNotCoroutine, CommandAlreadyRegistered,
-    CommandDescriptionTooLong, TooManyArguments, InvalidArgumentAnnotation,
-    CommandReturnIsEmpty, InvalidCommandGuild, InvalidCommandName,
-    InvalidEventName, InvalidUrlError, EmbedFieldError, TaskError,
-    TaskAlreadyRunning, TaskCancelError, TaskIsNotCoroutine, TaskInvalidDelay,
-    DispatchError, DisallowedIntentsError, InvalidTokenError, HeartbeatError,
-    UnavailableGuildError, HTTPError, NotModifiedError, BadRequestError,
-    UnauthorizedError, ForbiddenError, NotFoundError, MethodNotAllowedError,
-    RateLimitError, GatewayError, ServerError
-)
-from .objects import Intents
-from .utils import Choices, Descripted
+from ._config import *
+from .client import *
+from .commands import *
+from .exceptions import *
+from .objects import *
+from .utils import *
 
 __package__ = "pincer"
-__title__ = "Pincer library"
-__description__ = "Discord API wrapper rebuild from scratch."
+__title__ = "Pincer"
+__description__ = "Discord API wrapper made from scratch."
 __author__ = "Sigmanificient, Arthurdw"
 __email__ = "contact@pincer.dev"
 __license__ = "MIT"
@@ -58,22 +45,3 @@ class VersionInfo(NamedTuple):
 
 version_info = VersionInfo(0, 11, 5)
 __version__ = repr(version_info)
-
-__all__ = (
-    "BadRequestError", "Bot", "ChatCommandHandler", "Choices",
-    "Client", "CogAlreadyExists", "CogError", "CogNotFound",
-    "CommandAlreadyRegistered", "CommandCooldownError",
-    "CommandDescriptionTooLong", "CommandError", "CommandIsNotCoroutine",
-    "CommandReturnIsEmpty", "Descripted", "DisallowedIntentsError",
-    "DispatchError", "EmbedFieldError", "ForbiddenError", "GatewayConfig",
-    "GatewayError", "HTTPError", "HeartbeatError", "Intents",
-    "InvalidArgumentAnnotation", "InvalidCommandGuild", "InvalidCommandName",
-    "InvalidEventName", "InvalidTokenError", "InvalidUrlError",
-    "MethodNotAllowedError", "NoCogManagerReturnFound", "NoExportMethod",
-    "NoValidSetupMethod", "NotFoundError", "NotModifiedError", "PincerError",
-    "RateLimitError", "ServerError", "TaskAlreadyRunning", "TaskCancelError",
-    "TaskError", "TaskInvalidDelay", "TaskIsNotCoroutine", "TooManyArguments",
-    "TooManySetupArguments", "UnauthorizedError", "UnavailableGuildError",
-    "UnhandledException", "__author__", "__email__", "__package__",
-    "__title__", "__version__", "command", "event_middleware"
-)
