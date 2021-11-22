@@ -13,8 +13,6 @@ from ._config import *
 from .client import *
 from .commands import *
 from .exceptions import *
-from .objects import *
-from .utils import *
 
 __package__ = "pincer"
 __title__ = "Pincer"
