@@ -1,7 +1,7 @@
 """
 Pincer
-====================
-An asynchronous python API wrapper meant to replace discord.py
+========
+An asynchronous Python Wrapper for the Discord API 
 
 Copyright Pincer 2021
 Full MIT License can be found in `LICENSE` at the project root.
