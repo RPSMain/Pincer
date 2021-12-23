@@ -1,0 +1,62 @@
+name: Stub Changed Files
+
+on: [pull_request, push]
+
+jobs:
+  stub:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          python-version: '3.9'
+          architecture: 'x64'
+      
+      - name: Install mypy
+        run: pip install -U mypy
+      - name: Run Stubgen on middleware
+        run: stubgen pincer/middleware -o pincer/middleware
+      - name: Run Stubgen on commands
+        run: stubgen pincer/commands -o pincer/commands
+      - name: Run Stubgen on core
+        run: |
+        stubgen pincer/core/__init__.py -o pincer/core
+        stubgen pincer/core/dispatch.py -o pincer/core
+        stubgen pincer/core/gateway.py -o pincer/core
+        stubgen pincer/core/heartbeat.py -o pincer/core
+        stubgen pincer/core/ratelimiter.py -o pincer/core
+      - name: Run Stubgen on objects
+        run: |
+        stubgen pincer/objects/events -o pincer/objects/events
+        stubgen pincer/objects/app -o pincer/objects/app
+        stubgen pincer/objects/message -o pincer/objects/message
+        stubgen pincer/objects/user -o pincer/objects/user
+        stubgen pincer/objects/voice -o pincer/objects/voice
+      - name: Run Stubgen on objects/guild
+        run: |
+        stubgen pincer/objects/guild/__init__.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/audit_log.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/ban.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/channel.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/features.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/followed_channel.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/invite.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/member.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/overwrite.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/scheduled_events.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/stage.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/template.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/thread.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/welcome_screen.py -o pincer/objects/guild
+        stubgen pincer/objects/guild/widget.py -o pincer/objects/guild
+      - name: Run Stubgen on Utils
+        run: stubgen pincer/utils -o pincer/utils
+      - name: Run Stubgen on Pincer
+        run: |
+        stubgen pincer/__init__.py -o pincer
+        stubgen pincer/_config.py -o pincer
+        stubgen pincer/exceptions.py -o pincer
