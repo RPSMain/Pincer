@@ -338,7 +338,7 @@ class Gateway:
                     "properties": {
                         "$os": system(),
                         "$browser": self.browser,
-                        "$device": self.browser
+                        "$device": self.device
                     },
                     "compress": GatewayConfig.compressed(),
                     "shard": self.shard_key
